@@ -1,3 +1,6 @@
 session.jsonl
 nginx配置.txt
 toogle_ads.sh
+
+# 原始大图不入库，线上使用 images/ 下的优化 WebP
+/*.png
