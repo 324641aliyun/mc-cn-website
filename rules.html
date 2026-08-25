@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服务器规则 - MC.CN</title>
+    <style>
+        /* 样式与其他页面一致 */
+        :root {
+            --bg-start: #d9e2ec;
+            --bg-end: #f1f5f9;
+            --glass: rgba(255,255,255,0.4);
+            --glass-hover: rgba(255,255,255,0.55);
+            --glass-border: rgba(255,255,255,0.6);
+            --text: #1e293b;
+            --text2: #475569;
+            --accent: #0067c0;
+            --accent-hover: #1975c4;
+            --shadow: 0 8px 32px rgba(0,0,0,0.1);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.12);
+            --radius: 24px;
+            --transition: 0.3s cubic-bezier(0.2,0,0,1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Segoe UI", "Segoe UI Variable", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            width: 550px;
+            height: 550px;
+            border-radius: 50%;
+            filter: blur(130px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        body::before { background: rgba(255,255,255,0.7); top: -120px; left: -120px; }
+        body::after { background: rgba(56,189,248,0.3); bottom: -150px; right: -100px; }
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: 64px;
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+        .logo { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.5px; text-shadow: 0 1px 2px rgba(255,255,255,0.8); }
+        .logo .cn { color: var(--accent); }
+        .nav-links { display: flex; gap: 8px; align-items: center; }
+        .nav-links a {
+            padding: 8px 14px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text);
+            transition: background var(--transition);
+            background: rgba(255,255,255,0.1);
+            border: 1px solid transparent;
+        }
+        .nav-links a:hover { background: rgba(255,255,255,0.4); text-decoration: none; border-color: rgba(255,255,255,0.6); }
+        .nav-links a.active { background: rgba(255,255,255,0.5); color: var(--accent); border-color: rgba(255,255,255,0.8); }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 24px; flex: 1; width: 100%; position: relative; z-index: 1; }
+        h1 { font-size: 2.8rem; font-weight: 600; margin-bottom: 24px; letter-spacing: -0.5px; text-shadow: 0 2px 4px rgba(255,255,255,0.8); }
+        h2 { font-size: 1.8rem; font-weight: 600; margin: 30px 0 12px; text-shadow: 0 1px 2px rgba(255,255,255,0.6); }
+        ul { list-style: disc; padding-left: 24px; margin-bottom: 20px; }
+        li { color: var(--text2); line-height: 1.8; }
+        .highlight-box {
+            background: var(--glass);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            margin: 20px 0;
+        }
+        footer {
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255,255,255,0.5);
+            padding: 20px 24px;
+            text-align: center;
+            color: var(--text2);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+        footer a { color: var(--text2); }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .nav-links a { padding: 6px 10px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">MC.<span class="cn">CN</span></div>
+            <nav class="nav-links">
+                <a href="./index.html">首页</a>
+                <a href="./about.html">服务器介绍</a>
+                <a href="./mods.html">整合包介绍</a>
+                <a href="./download.html">下载</a>
+                <a href="./rules.html" class="active">规则</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>📋 服务器规则</h1>
+
+        <p>欢迎来到 MC.CN。为了维护良好的游戏环境，请所有玩家遵守以下规则。违规行为将视情节轻重受到警告、禁言、封禁等处罚。</p>
+
+        <div class="highlight-box">
+            <h2>🌐 记住我们的域名</h2>
+            <p><strong>mc.cn</strong> 是服务器唯一官方地址，请通过此域名连接。</p>
+        </div>
+
+        <h2>一、基本行为规范</h2>
+        <ul>
+            <li>1. 禁止使用任何严重影响平衡的作弊工具（如杀戮光环、飞行外挂、自动攻击等）。</li>
+            <li>2. 禁止恶意破坏他人建筑、偷窃物品、破坏公共设施。</li>
+            <li>3. 禁止在公屏刷屏、辱骂、发布广告、传播色情暴力内容。</li>
+            <li>4. 禁止利用漏洞卡服、崩服、恶意红石、恶意生物。</li>
+            <li>5. 尊重管理员和其他玩家，不得冒充管理员或散布谣言。</li>
+            <li>6. 禁止使用任何形式的透视材质包来获取不正当优势，但允许用于个人观赏，不得影响他人体验。</li>
+            <li>7. 禁止恶意圈地、占山为王，公共资源区域请共享。</li>
+            <li>8. 禁止在聊天中透露他人隐私信息。</li>
+        </ul>
+
+        <h2>二、建筑与领地</h2>
+        <ul>
+            <li>1. 请在指定区域建造，不要占用公共通道或他人领地。</li>
+            <li>2. 未经允许不得在他人建筑附近建造，保持合理距离。</li>
+            <li>3. 不要建造过于庞大且无意义的红石设备，以免影响服务器性能。</li>
+            <li>4. 禁止建造任何形式的陷阱或恶意机关伤害其他玩家。</li>
+            <li>5. 公共建筑和设施应共同维护，不得破坏。</li>
+        </ul>
+
+        <h2>三、聊天与交流</h2>
+        <ul>
+            <li>1. 请使用文明语言，避免争吵。</li>
+            <li>2. 禁止刷屏、重复发送相同信息。</li>
+            <li>3. 禁止发布任何广告或宣传其他服务器。</li>
+            <li>4. 禁止讨论政治、宗教等敏感话题。</li>
+            <li>5. 禁止恶意举报或滥用举报系统。</li>
+        </ul>
+
+        <h2>四、红石与性能</h2>
+        <ul>
+            <li>1. 大型红石机器请控制规模，避免造成服务器卡顿。</li>
+            <li>2. 禁止建造高频红石脉冲或永动装置。</li>
+            <li>3. 自动化设备应设置合理的开关，避免长期满载运行。</li>
+            <li>4. 服务器管理员有权对影响性能的装置进行限制或拆除。</li>
+        </ul>
+
+        <h2>五、作弊与漏洞</h2>
+        <ul>
+            <li>1. 禁止使用任何修改客户端、注入式外挂、宏脚本等。</li>
+            <li>2. 发现漏洞请立即向管理员报告，不得利用漏洞获利。</li>
+            <li>3. 禁止使用任何形式的复制物品漏洞。</li>
+            <li>4. 禁止恶意卡服、崩服、DDoS 攻击。</li>
+        </ul>
+
+        <h2>六、交易与物品</h2>
+        <ul>
+            <li>1. 禁止诈骗、强买强卖。</li>
+            <li>2. 交易请使用安全方式，谨防上当。</li>
+            <li>3. 禁止出售或购买游戏账号、物品（RMT），一经发现永久封禁。</li>
+        </ul>
+
+        <h2>七、违规处理</h2>
+        <ul>
+            <li>1. 轻微违规：警告一次。</li>
+            <li>2. 再次违规：禁言 1~7 天。</li>
+            <li>3. 严重违规：封禁 7 天至永久。</li>
+            <li>4. 对处罚有异议可联系管理员申诉。</li>
+        </ul>
+
+        <p>本规则最终解释权归 MC.CN 服务器管理组所有。感谢配合！</p>
+    </main>
+
+    <footer>
+        <p>© 2026 MC.CN 我的世界服务器</p>
+        <p><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">沪ICP备2026083233号-2</a></p>
+    </footer>
+
+    <script src="./ads_enabled.js"></script>
+    <script src="./ads.js"></script>
+</body>
+</html>
