@@ -664,6 +664,30 @@ img {
   margin-top: 8px;
 }
 
+/* 加载更多 */
+.news-more-wrap {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.btn-more {
+  display: inline-block;
+  background: #fff;
+  color: var(--blue);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 8px 26px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-more:hover {
+  background: #f5f0e8;
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
 /* 下载按钮 */
 .btn {
   display: inline-block;
