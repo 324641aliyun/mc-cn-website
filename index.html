@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MC.CN 网络信息服务中心 - 官方网站</title>
-    <meta name="description" content="MC.CN 网络信息服务中心官方网站，提供权威信息发布、在线服务和业务办理。">
+    <meta name="description" content="MC.CN 网络信息服务中心官方网站，权威信息发布、时政要闻和公共服务。">
     <script>
         if (!document.cookie.split('; ').some(function (c) { return c.indexOf('mc_verified=1') === 0; })) {
             window.location.replace('./verify.html');
@@ -57,12 +57,42 @@
 
     <main class="main">
         <div class="container">
-            <section class="hero-banner">
-                <img src="./images/office-building.webp" alt="中心办公大楼">
-                <div class="hero-overlay">
-                    <h1>MC.CN 网络信息服务中心</h1>
-                    <p>坚持依法依规、公开透明、高效便民，持续提升网络信息服务和数字治理能力，为广大群众提供规范、安全、便捷的在线服务。</p>
+            <section class="news-carousel" aria-label="置顶新闻">
+                <div class="slides" id="slides">
+                    <div class="slide active">
+                        <img src="./images/office-building.webp" alt="中心办公大楼">
+                        <div class="slide-overlay">
+                            <span class="slide-tag">置顶</span>
+                            <h2><a href="https://www.ndrc.gov.cn/wsdwhfz/202608/t20260818_1407057.html" target="_blank" rel="noopener">新闻联播｜习近平总书记今年以来治国理政纪实——坚定不移推动高质量发展 努力实现“十五五”良好开局</a></h2>
+                            <p class="slide-meta">来源：国家发展改革委网站　2026-08-18</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="./images/server-room.webp" alt="中心数据中心">
+                        <div class="slide-overlay">
+                            <span class="slide-tag">要闻</span>
+                            <h2><a href="http://www.scio.gov.cn/yw/lq_/202608/t20260821_1004349.html" target="_blank" rel="noopener">李强主持召开国务院常务会议</a></h2>
+                            <p class="slide-meta">来源：国务院新闻办公室网站　2026-08-21</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="./images/security-center.webp" alt="网络安全运营中心">
+                        <div class="slide-overlay">
+                            <span class="slide-tag">要闻</span>
+                            <h2><a href="http://www.news.cn/politics/leaders/20260818/a15e6eee8d7e4779aaf4c75567848e49/c.html" target="_blank" rel="noopener">习近平同厄瓜多尔总统诺沃亚会谈</a></h2>
+                            <p class="slide-meta">来源：新华网　2026-08-18</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="./images/digital-services.webp" alt="数字政务服务">
+                        <div class="slide-overlay">
+                            <span class="slide-tag">发布</span>
+                            <h2><a href="http://www.scio.gov.cn/live/2026/39207/index_m.html#1" target="_blank" rel="noopener">国新办举行“开局起步‘十五五’”系列主题新闻发布会</a></h2>
+                            <p class="slide-meta">来源：国务院新闻办公室网站　2026-08</p>
+                        </div>
+                    </div>
                 </div>
+                <div class="carousel-dots" id="carouselDots"></div>
             </section>
 
             <div class="notice-bar">
@@ -79,12 +109,12 @@
                     <div class="panel-body">
                         <ul class="news-list">
                             <li>
-                                <a href="https://www.ndrc.gov.cn/wsdwhfz/202608/t20260818_1407057.html" target="_blank" rel="noopener">新闻联播｜习近平总书记今年以来治国理政纪实——坚定不移推动高质量发展 努力实现“十五五”良好开局</a>
-                                <span class="date">2026-08-18</span>
+                                <a href="http://www.scio.gov.cn/yw/lq_/202608/t20260821_1004349.html" target="_blank" rel="noopener">李强主持召开国务院常务会议</a>
+                                <span class="date">2026-08-21</span>
                             </li>
                             <li>
-                                <a href="http://politics.people.com.cn/n1/2026/0823/c461001-40784440.html" target="_blank" rel="noopener">时政微观察丨从这些生动比喻感悟正确政绩观</a>
-                                <span class="date">2026-08-23</span>
+                                <a href="http://www.news.cn/politics/leaders/20260818/a15e6eee8d7e4779aaf4c75567848e49/c.html" target="_blank" rel="noopener">习近平同厄瓜多尔总统诺沃亚会谈</a>
+                                <span class="date">2026-08-18</span>
                             </li>
                             <li>
                                 <a href="http://www.news.cn/politics/20260825/505fa7534c374b60b6439db4a66c3976/c.html" target="_blank" rel="noopener">新华社评论员：树立和践行正确政绩观是一项长期任务</a>
@@ -95,8 +125,28 @@
                                 <span class="date">2026-08-24</span>
                             </li>
                             <li>
+                                <a href="http://politics.people.com.cn/n1/2026/0823/c461001-40784440.html" target="_blank" rel="noopener">时政微观察丨从这些生动比喻感悟正确政绩观</a>
+                                <span class="date">2026-08-23</span>
+                            </li>
+                            <li>
+                                <a href="http://www.scio.gov.cn/live/2026/39207/index_m.html#1" target="_blank" rel="noopener">国新办举行“开局起步‘十五五’”系列主题新闻发布会 介绍发挥积极财政政策作用</a>
+                                <span class="date">2026-08-20</span>
+                            </li>
+                            <li>
+                                <a href="http://big5.www.gov.cn/gate/big5/www.gov.cn/zhengce/202608/content_7078874.htm" target="_blank" rel="noopener">国务院常务会议部署进一步清理拖欠企业账款工作</a>
+                                <span class="date">2026-08-21</span>
+                            </li>
+                            <li>
                                 <a href="https://dfjrjgj.sc.gov.cn/scdfjrjgj/hyrd/2026/8/21/2ac837d945bc450896b1aba10309c426.shtml" target="_blank" rel="noopener">促内需 财政金融协同政策“组合拳”迎来优化</a>
                                 <span class="date">2026-08-21</span>
+                            </li>
+                            <li>
+                                <a href="http://swt.gxzf.gov.cn/zfxxgk/fdzdgknr/zwdt/swtx/t28061686.shtml" target="_blank" rel="noopener">商务部召开例行新闻发布会（2026年8月20日）</a>
+                                <span class="date">2026-08-20</span>
+                            </li>
+                            <li>
+                                <a href="https://www.ndrc.gov.cn/wsdwhfz/202608/t20260818_1407057.html" target="_blank" rel="noopener">新闻联播｜习近平总书记今年以来治国理政纪实——坚定不移推动高质量发展 努力实现“十五五”良好开局</a>
+                                <span class="date">2026-08-18</span>
                             </li>
                         </ul>
                     </div>
@@ -105,51 +155,45 @@
                 <aside>
                     <section class="panel">
                         <div class="panel-head">
-                            <h2 class="panel-title">服务入口</h2>
+                            <h2 class="panel-title">通知公告</h2>
                         </div>
                         <div class="panel-body">
                             <ul class="news-list">
-                                <li><a href="./about.html">中心概况</a><span class="date">了解我们</span></li>
-                                <li><a href="./mods.html">业务工作</a><span class="date">整合包服务</span></li>
-                                <li><a href="./download.html">下载服务</a><span class="date">客户端下载</span></li>
-                                <li><a href="./rules.html">规章制度</a><span class="date">规范文件</span></li>
-                                <li><a href="./news.html">新闻中心</a><span class="date">权威资讯</span></li>
+                                <li><a href="./news.html">关于进一步规范服务器接入与网络安全管理的公告</a><span class="date">2026-08-26</span></li>
+                                <li><a href="./download.html">ATM10 客户端整合包下载服务说明</a><span class="date">2026-08-20</span></li>
+                                <li><a href="./rules.html">《MC.CN 网络信息服务中心规章制度》修订版发布</a><span class="date">2026-08-15</span></li>
                             </ul>
                         </div>
                     </section>
 
                     <section class="panel">
                         <div class="panel-head">
-                            <h2 class="panel-title">中心概况</h2>
+                            <h2 class="panel-title">服务入口</h2>
                         </div>
-                        <div class="panel-body" style="font-size:0.9rem; line-height:1.8; color:#555;">
-                            <p>MC.CN 网络信息服务中心负责 mc.cn 域名的信息发布、网络安全和公共服务工作，坚持“公开、便民、高效、安全”的服务宗旨。</p>
-                            <p style="margin-top:8px;"><a href="./about.html">查看详细概况 &gt;&gt;</a></p>
+                        <div class="panel-body">
+                            <ul class="news-list">
+                                <li><a href="./about.html">单位概况</a><span class="date">了解我们</span></li>
+                                <li><a href="./mods.html">业务工作</a><span class="date">整合包服务</span></li>
+                                <li><a href="./download.html">下载服务</a><span class="date">客户端下载</span></li>
+                                <li><a href="./rules.html">规章制度</a><span class="date">规范文件</span></li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="panel">
+                        <div class="panel-head">
+                            <h2 class="panel-title">权威媒体</h2>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="news-list">
+                                <li><a href="https://www.gov.cn/" target="_blank" rel="noopener">中国政府网</a><span class="source">gov.cn</span></li>
+                                <li><a href="https://www.people.com.cn/" target="_blank" rel="noopener">人民网</a><span class="source">people.com.cn</span></li>
+                                <li><a href="https://www.news.cn/" target="_blank" rel="noopener">新华网</a><span class="source">news.cn</span></li>
+                            </ul>
                         </div>
                     </section>
                 </aside>
             </div>
-
-            <section class="card-grid" style="margin-top:4px;">
-                <div class="card">
-                    <div class="card-icon">🏛️</div>
-                    <h3>单位概况</h3>
-                    <p>中心简介、组织架构、工作职能和硬件设施等信息公开。</p>
-                    <p style="margin-top:10px;"><a href="./about.html">进入 &gt;&gt;</a></p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">📦</div>
-                    <h3>业务工作</h3>
-                    <p>ATM10 整合包业务介绍、技术规范和服务流程。</p>
-                    <p style="margin-top:10px;"><a href="./mods.html">进入 &gt;&gt;</a></p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">⬇️</div>
-                    <h3>下载服务</h3>
-                    <p>提供客户端整合包下载和安装使用说明。</p>
-                    <p style="margin-top:10px;"><a href="./download.html">进入 &gt;&gt;</a></p>
-                </div>
-            </section>
         </div>
     </main>
 
@@ -165,8 +209,39 @@
         (function () {
             var d = new Date();
             var week = ['日', '一', '二', '三', '四', '五', '六'];
-            var text = d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日 星期' + week[d.getDay()];
-            document.getElementById('today').textContent = text;
+            document.getElementById('today').textContent = d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日 星期' + week[d.getDay()];
+
+            var slides = document.querySelectorAll('#slides .slide');
+            var dotsWrap = document.getElementById('carouselDots');
+            var current = 0;
+            var timer = null;
+
+            slides.forEach(function (_, i) {
+                var btn = document.createElement('button');
+                btn.setAttribute('aria-label', '第' + (i + 1) + '张');
+                if (i === 0) btn.className = 'active';
+                btn.addEventListener('click', function () {
+                    go(i);
+                    restart();
+                });
+                dotsWrap.appendChild(btn);
+            });
+            var dots = dotsWrap.querySelectorAll('button');
+
+            function go(index) {
+                slides[current].classList.remove('active');
+                dots[current].classList.remove('active');
+                current = (index + slides.length) % slides.length;
+                slides[current].classList.add('active');
+                dots[current].classList.add('active');
+            }
+
+            function restart() {
+                if (timer) clearInterval(timer);
+                timer = setInterval(function () { go(current + 1); }, 5000);
+            }
+
+            restart();
         })();
     </script>
 </body>
