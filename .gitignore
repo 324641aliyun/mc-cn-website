@@ -1,6 +1,11 @@
+# 本地会话与备份，不进入公开仓库
 session.jsonl
+MC.CN/
+backup-*/
+
+# 原服务器端配置/脚本不入库
 nginx配置.txt
 toogle_ads.sh
 
-# 原始大图不入库，线上使用 images/ 下的优化 WebP
+# 原始大图不入库（线上使用 images/ 下的优化 WebP）
 /*.png

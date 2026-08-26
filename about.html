@@ -3,268 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>服务器介绍 - MC.CN</title>
-    <style>
-        /* 与首页相同的样式，可复制粘贴保持一致 */
-        :root {
-            --bg-start: #d9e2ec;
-            --bg-end: #f1f5f9;
-            --glass: rgba(255,255,255,0.4);
-            --glass-hover: rgba(255,255,255,0.55);
-            --glass-border: rgba(255,255,255,0.6);
-            --text: #1e293b;
-            --text2: #475569;
-            --accent: #0067c0;
-            --accent-hover: #1975c4;
-            --shadow: 0 8px 32px rgba(0,0,0,0.1);
-            --shadow-lg: 0 20px 40px rgba(0,0,0,0.12);
-            --radius: 24px;
-            --transition: 0.3s cubic-bezier(0.2,0,0,1);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: "Segoe UI", "Segoe UI Variable", "PingFang SC", "Microsoft YaHei", sans-serif;
-            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow-x: hidden;
-        }
-        body::before, body::after {
-            content: '';
-            position: fixed;
-            width: 550px;
-            height: 550px;
-            border-radius: 50%;
-            filter: blur(130px);
-            pointer-events: none;
-            z-index: 0;
-        }
-        body::before { background: rgba(255,255,255,0.7); top: -120px; left: -120px; }
-        body::after { background: rgba(56,189,248,0.3); bottom: -150px; right: -100px; }
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            height: 64px;
-            background: rgba(255,255,255,0.3);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(255,255,255,0.5);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            z-index: 2;
-        }
-        .logo { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.5px; text-shadow: 0 1px 2px rgba(255,255,255,0.8); }
-        .logo .cn { color: var(--accent); }
-        .nav-links { display: flex; gap: 8px; align-items: center; }
-        .nav-links a {
-            padding: 8px 14px;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text);
-            transition: background var(--transition);
-            background: rgba(255,255,255,0.1);
-            border: 1px solid transparent;
-        }
-        .nav-links a:hover { background: rgba(255,255,255,0.4); text-decoration: none; border-color: rgba(255,255,255,0.6); }
-        .nav-links a.active { background: rgba(255,255,255,0.5); color: var(--accent); border-color: rgba(255,255,255,0.8); }
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 24px; flex: 1; width: 100%; position: relative; z-index: 1; }
-        h1 { font-size: 2.8rem; font-weight: 600; margin-bottom: 24px; letter-spacing: -0.5px; text-shadow: 0 2px 4px rgba(255,255,255,0.8); }
-        h2 { font-size: 1.9rem; font-weight: 600; margin: 40px 0 16px; text-shadow: 0 1px 2px rgba(255,255,255,0.6); }
-        h3 { font-size: 1.4rem; font-weight: 600; margin: 24px 0 10px; }
-        p { color: var(--text2); line-height: 1.8; margin-bottom: 12px; }
-        ul { list-style: disc; padding-left: 24px; margin-bottom: 20px; }
-        li { color: var(--text2); line-height: 1.8; }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--glass);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            margin-bottom: 20px;
-            border: 1px solid var(--glass-border);
-        }
-        th, td {
-            padding: 12px 16px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            font-size: 0.95rem;
-        }
-        th { background: rgba(255,255,255,0.3); font-weight: 600; color: var(--text); }
-        td { color: var(--text2); }
-        tr:last-child td { border-bottom: none; }
-        .highlight-box {
-            background: var(--glass);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius);
-            padding: 24px;
-            box-shadow: var(--shadow);
-            margin: 20px 0;
-            transition: transform var(--transition), box-shadow var(--transition);
-        }
-        .highlight-box:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); background: var(--glass-hover); }
-        .img-container { margin: 20px 0; text-align: center; }
-        .img-container img { max-width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-lg); border: 1px solid rgba(255,255,255,0.6); }
-        .img-caption { font-size: 0.85rem; color: var(--text2); margin-top: 8px; text-shadow: 0 1px 2px rgba(255,255,255,0.5); }
-        footer {
-            background: rgba(255,255,255,0.3);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(255,255,255,0.5);
-            padding: 20px 24px;
-            text-align: center;
-            color: var(--text2);
-            font-size: 0.9rem;
-            position: relative;
-            z-index: 1;
-        }
-        footer a { color: var(--text2); }
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            .nav-links a { padding: 6px 10px; font-size: 0.85rem; }
-            table { font-size: 0.8rem; }
-        }
-    </style>
+    <title>单位概况 - MC.CN 网络信息服务中心</title>
+    <meta name="description" content="MC.CN 网络信息服务中心单位概况、组织架构、工作职能和硬件设施。">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <header>
-        <div class="nav-container">
-            <div class="logo">MC.<span class="cn">CN</span></div>
-            <nav class="nav-links">
-                <a href="./index.html">首页</a>
-                <a href="./about.html" class="active">服务器介绍</a>
-                <a href="./mods.html">整合包介绍</a>
-                <a href="./download.html">下载</a>
-                <a href="./rules.html">规则</a>
-            </nav>
+    <div class="topbar">
+        <div class="topbar-inner">
+            <span>欢迎访问 MC.CN 网络信息服务中心</span>
+            <span>
+                <a href="https://www.gov.cn/" target="_blank" rel="noopener">中国政府网</a>
+                <a href="https://www.people.com.cn/" target="_blank" rel="noopener">人民网</a>
+                <a href="https://www.news.cn/" target="_blank" rel="noopener">新华网</a>
+                <a href="./verify.html">安全验证</a>
+            </span>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <div class="logo-badge">MC</div>
+                <div>
+                    <div class="site-title">MC.CN 网络信息服务中心</div>
+                    <div class="site-subtitle">MC.CN Network Information Service Center</div>
+                </div>
+            </div>
+            <div class="header-tools">
+                <span class="header-date" id="today">加载日期...</span>
+                <form class="search-box" action="https://www.gov.cn/search/" method="get" target="_blank" rel="noopener">
+                    <input type="text" name="q" placeholder="搜索政策/服务" aria-label="搜索">
+                    <button type="submit">搜索</button>
+                </form>
+            </div>
         </div>
     </header>
 
-    <main class="container">
-        <h1>🖥️ 服务器介绍</h1>
-
-        <div class="img-container">
-            <img src="./images/about-server-room.webp" alt="服务器机房">
-            <div class="img-caption">我们的高性能服务器机房（示意图）</div>
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a href="./index.html">首页</a>
+            <a href="./about.html" class="active">单位概况</a>
+            <a href="./mods.html">业务工作</a>
+            <a href="./download.html">下载服务</a>
+            <a href="./rules.html">规章制度</a>
+            <a href="./news.html">新闻中心</a>
         </div>
+    </nav>
 
-        <p><strong>MC.CN</strong> 是一个以大型模组整合包 <strong>ATM10（All the Mods 10）</strong> 为核心玩法的 Minecraft Java 版服务器。我们投入巨资打造顶级硬件平台，采用多服务器集群架构和浸泡式液冷散热，确保 7×24 小时稳定运行，为玩家提供极致流畅的游戏体验。</p>
+    <main class="main">
+        <div class="container">
+            <div class="breadcrumb"><a href="./index.html">首页</a> &gt; 单位概况</div>
 
-        <div class="highlight-box">
-            <h2>🌐 超短域名 mc.cn</h2>
-            <p>我们拥有极其稀有且易记的域名 <strong>mc.cn</strong>。在游戏中输入 <strong>mc.cn</strong> 即可连接服务器，无需记忆复杂 IP。这个域名是 Minecraft 爱好者的专属标志，也代表了服务器的专业与权威。</p>
+            <article class="article">
+                <h1>单位概况</h1>
+
+                <div class="img-figure">
+                    <img src="./images/office-building.webp" alt="中心办公大楼">
+                    <div class="img-caption">MC.CN 网络信息服务中心办公大楼（示意图）</div>
+                </div>
+
+                <h2>一、中心简介</h2>
+                <p><strong>MC.CN 网络信息服务中心</strong>是负责 mc.cn 域名下网络信息服务、信息发布和网络安全保障的专门机构。中心坚持依法依规、公开透明、高效便民的原则，持续推进信息化建设，努力为公众提供规范、安全、便捷的网络服务。</p>
+                <p>中心拥有独立的数据中心、专业运维团队和完善的管理制度，承担域名服务、平台运维、内容审核、安全防护和用户服务等职能。</p>
+
+                <div class="highlight-box" style="background:#fdf6ec;border:1px solid #f0d9a8;padding:16px 18px;border-radius:6px;margin:18px 0;">
+                    <p><strong>官方域名：</strong>mc.cn 是本中心唯一对外提供服务的官方域名，请广大用户通过 mc.cn 访问，谨防仿冒网站。</p>
+                </div>
+
+                <h2>二、组织架构</h2>
+                <ul>
+                    <li><strong>综合办公室：</strong>负责行政协调、信息公开、对外联络和信访服务。</li>
+                    <li><strong>网络运维部：</strong>负责数据中心、服务器集群、网络线路和系统平台的日常运行维护。</li>
+                    <li><strong>信息安全部：</strong>负责网络安全监测、风险预警、应急处置和内容安全管理。</li>
+                    <li><strong>业务服务部：</strong>负责整合包服务、下载服务、用户咨询和投诉处理。</li>
+                </ul>
+
+                <h2>三、工作职能</h2>
+                <ul>
+                    <li>承担 mc.cn 域名相关网站和网络平台的建设、运行与维护。</li>
+                    <li>负责网络信息内容审核、发布管理和舆情监测。</li>
+                    <li>组织开展网络安全宣传、培训和应急演练。</li>
+                    <li>提供整合包下载、业务咨询和公共信息服务。</li>
+                    <li>依法配合有关部门开展网络空间治理工作。</li>
+                </ul>
+
+                <h2>四、硬件设施</h2>
+                <p>中心按照标准化机房要求建设，采用多服务器集群架构和浸泡式液冷散热系统，确保 7×24 小时稳定运行。所有设备部署在独立 42U 机柜内，配备双路供电、UPS 和动环监控系统。</p>
+
+                <div class="img-figure">
+                    <img src="./images/server-room.webp" alt="标准化数据中心机房">
+                    <div class="img-caption">中心标准化数据中心机房（示意图）</div>
+                </div>
+
+                <table class="official-table">
+                    <tr><th>项目</th><th>配置/说明</th></tr>
+                    <tr><td>代理服务器</td><td>Velocity 代理集群，负责统一入口、负载均衡</td></tr>
+                    <tr><td>业务服务器</td><td>7 台高性能子服，承载 ATM10 整合包业务</td></tr>
+                    <tr><td>存储系统</td><td>NVMe SSD + 自动备份，每日定时备份</td></tr>
+                    <tr><td>网络安全</td><td>防火墙、入侵检测、DDoS 防护、7×24 监控</td></tr>
+                    <tr><td>供电保障</td><td>在线式 UPS + 双路供电，保障业务连续性</td></tr>
+                </table>
+
+                <div class="img-figure">
+                    <img src="./images/security-center.webp" alt="网络安全运营中心">
+                    <div class="img-caption">中心网络安全运营中心（示意图）</div>
+                </div>
+
+                <h2>五、服务承诺</h2>
+                <ul>
+                    <li>坚持依法依规，严格履行网络信息安全管理责任。</li>
+                    <li>坚持公开透明，及时发布服务信息和政策动态。</li>
+                    <li>坚持高效便民，持续优化办事流程和用户体验。</li>
+                    <li>坚持安全可靠，全力保障平台稳定和数据安全。</li>
+                </ul>
+            </article>
         </div>
-
-        <h2>一、服务器架构</h2>
-        <p>我们采用 Velocity 代理 + 多子服架构，将不同功能分散到多台物理服务器，既保证了大厅的极高承载能力，又让 ATM10 模组子服运行流畅。</p>
-        <ul>
-            <li><strong>代理服务器</strong>：负责玩家统一入口、负载均衡、全局聊天、官网服务。</li>
-            <li><strong>主城大厅服</strong>：原版 Paper，极致优化，可容纳 300+ 玩家聚集。冒险模式，无怪无掉落。</li>
-            <li><strong>ATM10 子服</strong>：共 7 台，每台独立世界，承载 60~80 人，玩家通过跨服传送切换。</li>
-        </ul>
-
-        <div class="img-container">
-            <img src="./images/about-server-hardware.webp" alt="服务器硬件">
-            <div class="img-caption">服务器硬件特写</div>
-        </div>
-
-        <h2>二、硬件配置</h2>
-        <p>我们不计成本地选用当前最强单核性能 CPU 和顶级配件，确保 Minecraft 单线程主循环跑满，TPS 稳定。所有服务器均部署在 42U 机柜内，并采用浸泡式液冷散热。</p>
-
-        <h3>1. 代理服务器</h3>
-        <table>
-            <tr><th>配件</th><th>型号/规格</th></tr>
-            <tr><td>CPU</td><td>Intel Core Ultra 5 250K Plus</td></tr>
-            <tr><td>主板</td><td>B860 中端</td></tr>
-            <tr><td>内存</td><td>32GB DDR5-6000</td></tr>
-            <tr><td>硬盘</td><td>1TB PCIe 4.0 SSD + 4TB HDD（备份）</td></tr>
-            <tr><td>电源</td><td>Seasonic Prime TX-750 钛金</td></tr>
-            <tr><td>散热</td><td>浸泡式液冷（无风扇）</td></tr>
-        </table>
-
-        <h3>2. 主城大厅服</h3>
-        <table>
-            <tr><th>配件</th><th>型号/规格</th></tr>
-            <tr><td>CPU</td><td>Intel Core Ultra 7 270K Plus</td></tr>
-            <tr><td>主板</td><td>MSI MAG Z890 TOMAHAWK WIFI</td></tr>
-            <tr><td>内存</td><td>64GB DDR5-8000 CL34</td></tr>
-            <tr><td>硬盘</td><td>致钛 TiPro9000 2TB PCIe 5.0</td></tr>
-            <tr><td>电源</td><td>Seasonic Prime TX-1000 钛金</td></tr>
-            <tr><td>散热</td><td>浸泡式液冷（无风扇）</td></tr>
-        </table>
-
-        <h3>3. ATM10 子服（7台相同配置）</h3>
-        <table>
-            <tr><th>配件</th><th>型号/规格</th></tr>
-            <tr><td>CPU</td><td>Intel Core Ultra 7 270K Plus（单核性能王者）</td></tr>
-            <tr><td>主板</td><td>MSI MEG Z890 ACE（顶级供电，板载万兆）</td></tr>
-            <tr><td>内存</td><td>芝奇 Trident Z5 RGB 64GB (2×32G) DDR5-8000 CL34</td></tr>
-            <tr><td>硬盘</td><td>2 × 致钛 TiPro9000 2TB PCIe 5.0（RAID 0，顺序读 14.9GB/s）</td></tr>
-            <tr><td>电源</td><td>Seasonic Prime TX-1600 钛金（余量充足）</td></tr>
-            <tr><td>散热</td><td>浸泡式液冷（无风扇）</td></tr>
-            <tr><td>网卡</td><td>板载万兆（Z890 ACE 集成）</td></tr>
-        </table>
-
-        <h3>4. 浸泡式液冷系统</h3>
-        <ul>
-            <li><strong>液冷机柜</strong>：KITOZER 单相浸没式液冷机柜，20kW 级散热能力，含 CDU、板式换热器、循环泵、监控系统。</li>
-            <li><strong>冷却液</strong>：改性硅油，完全绝缘、不挥发、环保，容量约 500L。</li>
-            <li><strong>外置散热</strong>：闭式冷却塔，排热量 20kW，无冷凝水，低噪音。</li>
-            <li><strong>优点</strong>：散热效率远超风冷，无灰尘、无噪音，CPU 满载不降频。</li>
-        </ul>
-
-        <div class="img-container">
-            <img src="./images/about-data-center.webp" alt="数据中心">
-            <div class="img-caption">浸泡式液冷与数据中心</div>
-        </div>
-
-        <h3>5. 网络与供电</h3>
-        <table>
-            <tr><th>设备</th><th>型号/规格</th></tr>
-            <tr><td>万兆交换机</td><td>16 口万兆 SFP+</td></tr>
-            <tr><td>UPS</td><td>APC Smart-UPS SRT3000XLI 在线式 3000VA</td></tr>
-            <tr><td>PDU</td><td>机架式 PDU，带防雷</td></tr>
-            <tr><td>企业宽带</td><td>500Mbps 上行，固定公网 IP</td></tr>
-            <tr><td>机柜</td><td>Vertiv VR3350 42U（前后网孔门，冷热通道隔离）</td></tr>
-        </table>
-
-        <h2>三、特色功能</h2>
-        <ul>
-            <li><strong>跨服聊天</strong>：所有子服聊天互通，热闹非凡。</li>
-            <li><strong>跨服传送</strong>：无需退出游戏，使用命令即可在不同子服间切换。</li>
-            <li><strong>自动备份</strong>：每日定时备份存档，数据安全有保障。</li>
-            <li><strong>反作弊系统</strong>：安装反作弊插件，检测并阻止严重影响平衡的作弊行为。</li>
-            <li><strong>专业运维</strong>：7×24 小时监控，自动重启无响应节点。</li>
-        </ul>
-
-        <h2>四、加入我们</h2>
-        <p>在 Minecraft Java 版中输入 <strong>mc.cn</strong> 即可加入服务器。首次进入请阅读规则，下载整合包请点击 <a href="./download.html">下载页面</a>。</p>
     </main>
 
-    <footer>
-        <p>© 2026 MC.CN 我的世界服务器</p>
-        <p><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">沪ICP备2026083233号-2</a></p>
+    <footer class="footer">
+        <p>主办单位：MC.CN 网络信息服务中心　|　联系方式：service@mc.cn</p>
+        <p>版权所有 © 2026 MC.CN 网络信息服务中心　保留所有权利</p>
+        <p class="beian">
+            <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">沪ICP备2026083233号-2</a>
+        </p>
     </footer>
 
-    <script src="./ads_enabled.js"></script>
-    <script src="./ads.js"></script>
+    <script>
+        (function () {
+            var d = new Date();
+            var week = ['日', '一', '二', '三', '四', '五', '六'];
+            document.getElementById('today').textContent = d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日 星期' + week[d.getDay()];
+        })();
+    </script>
 </body>
 </html>
