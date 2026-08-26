@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-从权威媒体页面抓取最近三天时政新闻，生成 assets/data/news.json。
+从权威媒体页面抓取最近一天时政新闻，生成 assets/data/news.json。
 用于 GitHub Actions 定时更新，也可在本地手动运行。
 """
 import datetime
@@ -74,7 +74,7 @@ def extract_items(html_text, base_url, source_name, date_pattern):
 
 def main():
     today = datetime.date.today()
-    cutoff = today - datetime.timedelta(days=3)
+    cutoff = today - datetime.timedelta(days=1)
     all_items = []
 
     for src in SOURCES:

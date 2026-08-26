@@ -1,4 +1,4 @@
-/* MC.CN 新闻动态加载：从 assets/data/news.json 读取并渲染 */
+/* MC.CN 新闻动态加载：从 assets/data/news.json 读取并自动滚动加载 */
 (function () {
     var PAGE_SIZE = 10;
     var lists = document.querySelectorAll('.js-news-list');
@@ -28,7 +28,7 @@
     }
 
     function initList(list) {
-        var moreBtn = list.parentNode.querySelector('.js-news-more');
+        var sentinel = list.parentNode.querySelector('.js-news-sentinel');
         var current = 0;
         var items = [];
         var observer = null;
@@ -37,27 +37,20 @@
             var next = current + PAGE_SIZE;
             renderItems(list, items, current, next);
             current = next;
-            if (moreBtn) {
-                if (current >= items.length) {
-                    moreBtn.style.display = 'none';
-                    if (observer) observer.disconnect();
-                } else {
-                    moreBtn.style.display = '';
-                }
+            if (sentinel && current >= items.length && observer) {
+                observer.disconnect();
             }
         }
 
-        if (moreBtn && 'IntersectionObserver' in window) {
+        if (sentinel && 'IntersectionObserver' in window) {
             observer = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
-                    if (entry.isIntersecting && moreBtn.style.display !== 'none') {
+                    if (entry.isIntersecting) {
                         showMore();
                     }
                 });
-            }, { rootMargin: '80px' });
-            observer.observe(moreBtn);
-        } else if (moreBtn) {
-            moreBtn.addEventListener('click', showMore);
+            }, { rootMargin: '120px' });
+            observer.observe(sentinel);
         }
 
         fetch('./assets/data/news.json', { cache: 'no-store' })

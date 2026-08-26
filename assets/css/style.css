@@ -28,16 +28,33 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background:
-    radial-gradient(circle at 12% 18%, rgba(176, 31, 36, 0.045), transparent 32%),
-    radial-gradient(circle at 88% 8%, rgba(31, 78, 121, 0.06), transparent 30%),
-    radial-gradient(circle at 75% 80%, rgba(176, 31, 36, 0.03), transparent 28%),
-    linear-gradient(180deg, #f8f5f0 0%, #eef1f5 100%);
+  background-image: url('../../images/background-desktop.webp');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--text);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-attachment: fixed;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(248, 245, 240, 0.86), rgba(238, 241, 245, 0.90));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.topbar,
+.header,
+.navbar,
+.main,
+.footer {
+  position: relative;
+  z-index: 1;
 }
 
 a {
@@ -855,6 +872,14 @@ img {
   color: var(--text-light);
   font-size: 0.85rem;
   margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  body {
+    background-image: url('../../images/background-mobile.webp');
+    background-position: center top;
+    background-size: cover;
+  }
 }
 
 @media (max-width: 720px) {
