@@ -43,6 +43,12 @@
   },
   {
     "title": "习近平就朝鲜国庆78周年向朝鲜最高领导人金正恩致贺电",
+    "url": "http://politics.people.com.cn/n1/2026/0909/c1024-40795332.html",
+    "source": "人民网",
+    "date": "2026-09-09"
+  },
+  {
+    "title": "习近平就朝鲜国庆78周年向朝鲜最高领导人金正恩致贺电",
     "url": "http://politics.people.com.cn/n1/2026/0909/c1024-40795092.html",
     "source": "人民网",
     "date": "2026-09-09"
@@ -63,6 +69,54 @@
     "title": "习近平同英国首相伯纳姆通电话",
     "url": "http://politics.people.com.cn/n1/2026/0909/c1024-40794978.html",
     "source": "人民网",
+    "date": "2026-09-09"
+  },
+  {
+    "title": "第三届新时代青年“重走长征路”活动在贵州遵义启动",
+    "url": "https://www.news.cn/politics/20260909/a866ef4f6c284cc3bbdf3f10c6af301b/c.html",
+    "source": "新华网",
+    "date": "2026-09-09"
+  },
+  {
+    "title": "天山南北，传统产业向新向智",
+    "url": "https://www.news.cn/politics/20260909/b0af8947a4724407821d431daf4031d5/c.html",
+    "source": "新华网",
+    "date": "2026-09-09"
+  },
+  {
+    "title": "老师们辛苦了，请收下这份健康指南",
+    "url": "https://www.news.cn/politics/20260909/b20b965d934a4240961dbbff73fa4630/c.html",
+    "source": "新华网",
+    "date": "2026-09-09"
+  },
+  {
+    "title": "中国快递按下转型升级“换挡键”",
+    "url": "https://www.news.cn/politics/20260909/d25099db2e304d24bfa1ca63ba6b5495/c.html",
+    "source": "新华网",
+    "date": "2026-09-09"
+  },
+  {
+    "title": "两地已故人士金融账户查询服务试点经验获全国推广",
+    "url": "https://www.news.cn/legal/20260909/1463163f768d4976b0bd78dc15d8a827/c.html",
+    "source": "新华网",
+    "date": "2026-09-09"
+  },
+  {
+    "title": "2026年“E法同行 兴辽治宁”全国网络法治主题宣传活动在辽宁沈阳启动",
+    "url": "https://www.news.cn/legal/20260909/8e3ef20733944e4cb76d60921a809cf0/c.html",
+    "source": "新华网",
+    "date": "2026-09-09"
+  },
+  {
+    "title": "之江甘霖万物生——浙江五维共治赋能生态多样性保护",
+    "url": "https://www.news.cn/local/20260909/6b6f4c6bc9604f58bc9a68c6b8fae303/c.html",
+    "source": "新华网",
+    "date": "2026-09-09"
+  },
+  {
+    "title": "北京城市绿心森林公园——工业重地绿色新生",
+    "url": "https://www.news.cn/local/20260909/d2bfeb98f3b74caaaca86632fbef83b1/c.html",
+    "source": "新华网",
     "date": "2026-09-09"
   },
   {
@@ -114,6 +168,72 @@
     "date": "2026-09-08"
   },
   {
+    "title": "中国天眼构建世界最大中性氢星系样本库",
+    "url": "https://www.news.cn/politics/20260908/09d874256d0a4d88bb59a6e8f5eca660/c.html",
+    "source": "新华网",
+    "date": "2026-09-08"
+  },
+  {
+    "title": "特稿丨从榜单到展会，中国创新频频成为世界焦点",
+    "url": "https://www.news.cn/politics/20260908/545bda114f764fd0ae23ccfd761ec830/c.html",
+    "source": "新华网",
+    "date": "2026-09-08"
+  },
+  {
+    "title": "上海生育保障再升级：10月1日起实现个人“无自付”",
+    "url": "https://www.news.cn/politics/20260908/cbb7adfb18bc41db878e87f1b75a043d/c.html",
+    "source": "新华网",
+    "date": "2026-09-08"
+  },
+  {
+    "title": "赓续长征精神 奋进复兴征程丨探访万里“红飘带”最远的起点",
+    "url": "https://www.news.cn/politics/20260908/a22c3f145a38459388a9303994cc4453/c.html",
+    "source": "新华网",
+    "date": "2026-09-08"
+  },
+  {
+    "title": "活力中国调研行丨换挡升级 中原农机沃野“耕”新",
+    "url": "https://www.news.cn/politics/20260908/e21b27cd26b5477f86772d2921f0a31b/c.html",
+    "source": "新华网",
+    "date": "2026-09-08"
+  },
+  {
+    "title": "新华鲜报丨守护眼健康 三部门发文开出暖心“处方”",
+    "url": "https://www.news.cn/politics/20260908/69746104274a41c1aa1df7f757cb9dd3/c.html",
+    "source": "新华网",
+    "date": "2026-09-08"
+  },
+  {
+    "title": "新华视点丨灵活就业人员看病报销如何更有保障",
+    "url": "https://www.news.cn/politics/20260908/a3b292762dac4cb7b372c01f90c7b204/c.html",
+    "source": "新华网",
+    "date": "2026-09-08"
+  },
+  {
+    "title": "渔业发展“十五五”规划公布",
+    "url": "https://www.news.cn/politics/20260908/de44bf1025914ffa957133e553cd628c/c.html",
+    "source": "新华网",
+    "date": "2026-09-08"
+  },
+  {
+    "title": "人力资源社会保障部部署开展就业政策宣传月活动",
+    "url": "https://www.news.cn/politics/20260908/12ef747cb8b5409b9853959b7641ebaf/c.html",
+    "source": "新华网",
+    "date": "2026-09-08"
+  },
+  {
+    "title": "新华社文化随笔：边疆考古作答“何以中国”",
+    "url": "https://www.news.cn/politics/20260908/8234e9c657174a8288fd3e5f2f536c4b/c.html",
+    "source": "新华网",
+    "date": "2026-09-08"
+  },
+  {
+    "title": "新华时评丨科学治理蒿草 回应民生关切",
+    "url": "https://www.news.cn/politics/20260908/c5628fdf385d4256ab4d953aff1cf382/c.html",
+    "source": "新华网",
+    "date": "2026-09-08"
+  },
+  {
     "title": "“赓续长征精神 奋进复兴征程——记者再走长征路”主题采访启动",
     "url": "https://www.news.cn/politics/20260908/3e255425b7ff47039d122501ebd2a0ec/c.html",
     "source": "新华网",
@@ -126,8 +246,14 @@
     "date": "2026-09-08"
   },
   {
-    "title": "千笔楼丨深圳校服，为啥能冲上“热搜第一”？",
-    "url": "https://www.news.cn/local/20260908/98945005ad044a449d77898ee4ec0587/c.html",
+    "title": "应聘后敲诈勒索 宁夏7人因“劳务碰瓷”获刑",
+    "url": "https://www.news.cn/legal/20260908/e621d03ebd5b428da848ed6f9c6dc07e/c.html",
+    "source": "新华网",
+    "date": "2026-09-08"
+  },
+  {
+    "title": "乌蒙山深处：乡镇集市“摆摊接访” 干部一线服务群众",
+    "url": "https://www.news.cn/photo/20260908/093a6ae9862941aeaa692b8a5fba60c9/c.html",
     "source": "新华网",
     "date": "2026-09-08"
   }
