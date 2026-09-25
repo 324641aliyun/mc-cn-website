@@ -902,3 +902,148 @@ img {
     width: 120px;
   }
 }
+
+/* ===== Windows 10 tile style overrides ===== */
+* {
+  border-radius: 0 !important;
+}
+
+body::before {
+  background: linear-gradient(180deg, rgba(248, 245, 240, 0.68), rgba(238, 241, 245, 0.78));
+}
+
+.topbar,
+.header,
+.navbar,
+.main,
+.verify-wrap,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+.topbar {
+  background: #005a9e;
+}
+
+.navbar {
+  background: #0078d7;
+}
+
+.logo-badge {
+  background: #0078d7;
+  box-shadow: none;
+}
+
+.panel {
+  border: 1px solid #d2d2d2;
+  box-shadow: none;
+}
+
+.panel-head {
+  background: #0078d7;
+  border-bottom: none;
+}
+
+.panel-title {
+  color: #fff;
+  border-left: none;
+  padding-left: 0;
+}
+
+.panel-more,
+.panel-more a {
+  color: #eaf4ff;
+}
+
+.card {
+  background: #0078d7;
+  border: none;
+  color: #fff;
+  box-shadow: none;
+}
+
+.card h3,
+.card p,
+.card a {
+  color: #fff;
+}
+
+.btn {
+  background: #0078d7;
+}
+
+.btn:hover {
+  background: #106ebe;
+}
+
+.search-box {
+  border-color: #0078d7;
+}
+
+.search-box button {
+  background: #0078d7;
+}
+
+.search-box button:hover {
+  background: #106ebe;
+}
+
+.verify-wrap {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 16px;
+}
+
+.verify-card {
+  background: #fff;
+  border: 1px solid #d2d2d2;
+  border-top: 6px solid #0078d7;
+  box-shadow: none;
+  max-width: 560px;
+  width: 100%;
+  padding: 28px;
+  text-align: center;
+}
+
+.verify-card h1 {
+  font-family: var(--font-serif);
+  color: #004578;
+  margin-bottom: 8px;
+}
+
+.verify-card .subtitle {
+  color: var(--text-light);
+  margin-bottom: 18px;
+  font-size: 0.92rem;
+}
+
+.captcha-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin: 18px 0;
+  background: #d2d2d2;
+  border: 4px solid #d2d2d2;
+}
+
+.captcha-cell {
+  aspect-ratio: 1;
+  background-repeat: no-repeat;
+  background-size: 300% 300%;
+  background-color: #eeeeee;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.captcha-cell:hover {
+  border-color: #0078d7;
+}
+
+.captcha-cell.selected {
+  border-color: #0078d7;
+  box-shadow: inset 0 0 0 3px rgba(0, 120, 215, 0.55);
+}

@@ -21,16 +21,13 @@
     <main class="verify-wrap">
         <div class="verify-card">
             <h1>安全验证</h1>
-            <p class="subtitle">请选择所有包含 <strong id="targetName">红绿灯</strong> 的图片，验证通过后还需等待 20 秒。</p>
-            <div class="timer-box">
-                ⏳ 剩余时间：<span class="time" id="timerDisplay">20</span> 秒
-            </div>
-            <div class="grid" id="grid"></div>
+            <p class="subtitle">请选择所有包含 <strong>红绿灯</strong> 的图片区块，验证通过后还需等待 20 秒。</p>
+            <div class="captcha-grid" id="captchaGrid"></div>
             <p class="error-msg" id="errorMsg"></p>
             <p class="success-msg" id="successMsg"></p>
             <button class="btn" id="verifyBtn" onclick="checkAnswer()">验 证</button>
             <p class="wait-msg" id="waitMsg"></p>
-            <p style="margin-top:16px; font-size:0.82rem; color:#888;">验证通过后将自动进入 MC.CN 网络信息服务中心官方网站。</p>
+            <p style="margin-top:14px; font-size:0.82rem; color:#888;">验证通过后将自动进入 MC.CN 网络信息服务中心官方网站。</p>
         </div>
     </main>
 
@@ -42,86 +39,51 @@
     </footer>
 
     <script>
-        // 图标库
-        const icons = {
-            '红绿灯': '🚦',
-            '公交车': '🚌',
-            '汽车': '🚗',
-            '自行车': '🚲',
-            '飞机': '✈️',
-            '船': '🚢',
-            '火车': '🚂',
-            '摩托车': '🏍️',
-            '狗': '🐕',
-            '猫': '🐈',
-            '鸟': '🐦',
-            '鱼': '🐟'
-        };
+        var CAPTCHA_IMAGE = './images/captcha-street.webp';
+        var CORRECT_CELLS = [0, 2, 4, 7];
+        var selectedIndices = new Set();
+        var verified = false;
+        var timerRemaining = 20;
+        var timerInterval = null;
+        var lockInput = false;
 
-        const iconNames = Object.keys(icons);
-        let targetName = iconNames[Math.floor(Math.random() * iconNames.length)];
-        let correctIndices = [];
-        let selectedIndices = new Set();
-        let verified = false;
-        let timerDone = false;
-        let timerRemaining = 20;
-        let timerInterval = null;
-        let lockInput = false;
-
-        function initGrid() {
-            const grid = document.getElementById('grid');
-            document.getElementById('targetName').textContent = targetName;
+        function initCaptcha() {
+            var grid = document.getElementById('captchaGrid');
             grid.innerHTML = '';
             selectedIndices.clear();
             verified = false;
-            timerDone = false;
-            timerRemaining = 20;
             lockInput = false;
-            document.getElementById('timerDisplay').textContent = '20';
+            timerRemaining = 20;
             document.getElementById('errorMsg').textContent = '';
             document.getElementById('successMsg').textContent = '';
             document.getElementById('waitMsg').textContent = '';
             document.getElementById('verifyBtn').disabled = false;
             document.getElementById('verifyBtn').textContent = '验 证';
 
-            const cellIcons = [];
-            const totalCells = 9;
-            const targetCount = Math.floor(Math.random() * 3) + 2;
-            correctIndices = [];
-
-            const allIndices = Array.from({length: totalCells}, (_, i) => i);
-            for (let i = 0; i < targetCount; i++) {
-                const idx = Math.floor(Math.random() * allIndices.length);
-                correctIndices.push(allIndices[idx]);
-                allIndices.splice(idx, 1);
-            }
-
-            for (let i = 0; i < totalCells; i++) {
-                if (correctIndices.includes(i)) {
-                    cellIcons.push(icons[targetName]);
-                } else {
-                    let otherIcons = iconNames.filter(n => n !== targetName);
-                    cellIcons.push(icons[otherIcons[Math.floor(Math.random() * otherIcons.length)]]);
-                }
-            }
-
-            for (let i = 0; i < totalCells; i++) {
-                const cell = document.createElement('div');
-                cell.className = 'cell';
-                cell.textContent = cellIcons[i];
+            for (var i = 0; i < 9; i++) {
+                var cell = document.createElement('div');
+                cell.className = 'captcha-cell';
                 cell.dataset.index = i;
-                cell.addEventListener('click', () => toggleCell(i, cell));
+                var row = Math.floor(i / 3);
+                var col = i % 3;
+                cell.style.backgroundImage = 'url("' + CAPTCHA_IMAGE + '")';
+                cell.style.backgroundSize = '300% 300%';
+                cell.style.backgroundPosition = (col * 50) + '% ' + (row * 50) + '%';
+                cell.addEventListener('click', function () {
+                    toggleCell(this);
+                });
                 grid.appendChild(cell);
             }
         }
 
-        function toggleCell(index, cell) {
+        function toggleCell(cell) {
             if (lockInput) return;
-            if (selectedIndices.has(index)) {
-                selectedIndices.delete(index);
+            var idx = parseInt(cell.dataset.index, 10);
+            if (selectedIndices.has(idx)) {
+                selectedIndices.delete(idx);
                 cell.classList.remove('selected');
             } else {
-                selectedIndices.add(index);
+                selectedIndices.add(idx);
                 cell.classList.add('selected');
             }
         }
@@ -129,12 +91,12 @@
         function checkAnswer() {
             if (lockInput) return;
             if (selectedIndices.size === 0) {
-                document.getElementById('errorMsg').textContent = '请先选择图片';
+                document.getElementById('errorMsg').textContent = '请先选择图片区块';
                 return;
             }
 
-            const isCorrect = selectedIndices.size === correctIndices.length &&
-                correctIndices.every(idx => selectedIndices.has(idx));
+            var isCorrect = selectedIndices.size === CORRECT_CELLS.length &&
+                CORRECT_CELLS.every(function (idx) { return selectedIndices.has(idx); });
 
             if (isCorrect) {
                 verified = true;
@@ -145,33 +107,35 @@
                 document.getElementById('waitMsg').textContent = '正在等待时间结束...';
                 startTimer();
             } else {
-                document.getElementById('errorMsg').textContent = '❌ 验证失败，请重试';
+                document.getElementById('errorMsg').textContent = '❌ 验证失败，请重新选择';
                 document.getElementById('successMsg').textContent = '';
-                setTimeout(() => {
-                    initGrid();
+                lockInput = true;
+                setTimeout(function () {
+                    selectedIndices.clear();
+                    document.querySelectorAll('.captcha-cell.selected').forEach(function (cell) {
+                        cell.classList.remove('selected');
+                    });
+                    lockInput = false;
                 }, 800);
             }
         }
 
         function startTimer() {
-            timerInterval = setInterval(() => {
+            timerInterval = setInterval(function () {
                 timerRemaining--;
-                document.getElementById('timerDisplay').textContent = timerRemaining;
-                document.getElementById('waitMsg').textContent = `验证已通过，还需等待 ${timerRemaining} 秒...`;
-
+                document.getElementById('waitMsg').textContent = '验证已通过，还需等待 ' + timerRemaining + ' 秒...';
                 if (timerRemaining <= 0) {
                     clearInterval(timerInterval);
-                    timerDone = true;
                     document.getElementById('waitMsg').textContent = '验证完成，正在进入...';
                     document.cookie = "mc_verified=1; path=/; max-age=86400";
-                    setTimeout(() => {
+                    setTimeout(function () {
                         window.location.href = './index.html';
                     }, 500);
                 }
             }, 1000);
         }
 
-        initGrid();
+        initCaptcha();
     </script>
 </body>
 </html>
