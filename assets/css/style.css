@@ -58,7 +58,7 @@ body::before {
 }
 
 a {
-  color: var(--blue);
+  color: var(--primary-dark);
   text-decoration: none;
 }
 
@@ -264,7 +264,7 @@ img {
 }
 
 .breadcrumb a {
-  color: var(--blue);
+  color: var(--primary-dark);
 }
 
 /* 首页横幅 */
@@ -637,10 +637,10 @@ img {
 .article h2 {
   font-family: var(--font-serif);
   font-size: 1.3rem;
-  color: var(--blue);
+  color: var(--primary-dark);
   margin: 28px 0 12px;
   padding-left: 10px;
-  border-left: 4px solid var(--blue-light);
+  border-left: 4px solid var(--primary-light);
 }
 
 .article h3 {
@@ -690,7 +690,7 @@ img {
 .btn-more {
   display: inline-block;
   background: #fff;
-  color: var(--blue);
+  color: var(--primary-dark);
   border: 1px solid var(--line);
   border-radius: 4px;
   padding: 8px 26px;
@@ -722,11 +722,11 @@ img {
 }
 
 .btn-blue {
-  background: var(--blue);
+  background: var(--primary-dark);
 }
 
 .btn-blue:hover {
-  background: var(--blue-light);
+  background: var(--primary-light);
 }
 
 /* 页脚 */
@@ -826,7 +826,7 @@ img {
 }
 
 .cell:hover {
-  border-color: var(--blue-light);
+  border-color: var(--primary-light);
   background: #fff;
 }
 
@@ -923,15 +923,15 @@ body::before {
 }
 
 .topbar {
-  background: #005a9e;
+  background: var(--primary-dark);
 }
 
 .navbar {
-  background: #0078d7;
+  background: var(--primary);
 }
 
 .logo-badge {
-  background: #0078d7;
+  background: var(--primary);
   box-shadow: none;
 }
 
@@ -941,7 +941,7 @@ body::before {
 }
 
 .panel-head {
-  background: #0078d7;
+  background: var(--primary);
   border-bottom: none;
 }
 
@@ -953,11 +953,11 @@ body::before {
 
 .panel-more,
 .panel-more a {
-  color: #eaf4ff;
+  color: #ffe8e8;
 }
 
 .card {
-  background: #0078d7;
+  background: var(--primary);
   border: none;
   color: #fff;
   box-shadow: none;
@@ -970,23 +970,23 @@ body::before {
 }
 
 .btn {
-  background: #0078d7;
+  background: var(--primary);
 }
 
 .btn:hover {
-  background: #106ebe;
+  background: var(--primary-light);
 }
 
 .search-box {
-  border-color: #0078d7;
+  border-color: var(--primary);
 }
 
 .search-box button {
-  background: #0078d7;
+  background: var(--primary);
 }
 
 .search-box button:hover {
-  background: #106ebe;
+  background: var(--primary-light);
 }
 
 .verify-wrap {
@@ -1000,7 +1000,7 @@ body::before {
 .verify-card {
   background: #fff;
   border: 1px solid #d2d2d2;
-  border-top: 6px solid #0078d7;
+  border-top: 6px solid var(--primary);
   box-shadow: none;
   max-width: 560px;
   width: 100%;
@@ -1010,7 +1010,7 @@ body::before {
 
 .verify-card h1 {
   font-family: var(--font-serif);
-  color: #004578;
+  color: var(--primary-dark);
   margin-bottom: 8px;
 }
 
@@ -1040,10 +1040,10 @@ body::before {
 }
 
 .captcha-cell:hover {
-  border-color: #0078d7;
+  border-color: var(--primary);
 }
 
 .captcha-cell.selected {
-  border-color: #0078d7;
-  box-shadow: inset 0 0 0 3px rgba(0, 120, 215, 0.55);
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 3px rgba(176, 31, 36, 0.55);
 }
