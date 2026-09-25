@@ -1030,7 +1030,7 @@ body::before {
 }
 
 .captcha-cell {
-  aspect-ratio: 1;
+  aspect-ratio: 3 / 2;
   background-repeat: no-repeat;
   background-size: 300% 300%;
   background-color: #eeeeee;

@@ -21,11 +21,14 @@
     <main class="verify-wrap">
         <div class="verify-card">
             <h1>安全验证</h1>
-            <p class="subtitle">请选择所有包含 <strong>红绿灯</strong> 的图片区块，验证通过后还需等待 20 秒。</p>
+            <p class="subtitle">请选择所有包含 <strong id="targetName">目标物体</strong> 的图片区块，验证通过后还需等待 20 秒。</p>
             <div class="captcha-grid" id="captchaGrid"></div>
             <p class="error-msg" id="errorMsg"></p>
             <p class="success-msg" id="successMsg"></p>
-            <button class="btn" id="verifyBtn" onclick="checkAnswer()">验 证</button>
+            <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+                <button class="btn" id="verifyBtn" onclick="checkAnswer()">验 证</button>
+                <button class="btn-more" id="refreshBtn" type="button" onclick="pickAndRender()">换一张</button>
+            </div>
             <p class="wait-msg" id="waitMsg"></p>
             <p style="margin-top:14px; font-size:0.82rem; color:#888;">验证通过后将自动进入 MC.CN 网络信息服务中心官方网站。</p>
         </div>
@@ -39,26 +42,44 @@
     </footer>
 
     <script>
-        var CAPTCHA_IMAGE = './images/captcha-street.webp';
-        var CORRECT_CELLS = [0, 2, 4, 7];
+        var FALLBACK_POOL = [
+            {
+                image: './images/captcha/real-01-traffic-lights.webp',
+                target: '红绿灯',
+                cells: [3, 4, 5]
+            }
+        ];
+        var captchaPool = [];
+        var currentCaptcha = null;
         var selectedIndices = new Set();
         var verified = false;
         var timerRemaining = 20;
         var timerInterval = null;
         var lockInput = false;
 
-        function initCaptcha() {
+        function pickAndRender() {
+            if (!captchaPool.length) {
+                captchaPool = FALLBACK_POOL;
+            }
+            var index = Math.floor(Math.random() * captchaPool.length);
+            currentCaptcha = captchaPool[index];
+            renderCaptcha(currentCaptcha);
+        }
+
+        function renderCaptcha(item) {
             var grid = document.getElementById('captchaGrid');
             grid.innerHTML = '';
             selectedIndices.clear();
             verified = false;
             lockInput = false;
             timerRemaining = 20;
+            document.getElementById('targetName').textContent = item.target;
             document.getElementById('errorMsg').textContent = '';
             document.getElementById('successMsg').textContent = '';
             document.getElementById('waitMsg').textContent = '';
             document.getElementById('verifyBtn').disabled = false;
             document.getElementById('verifyBtn').textContent = '验 证';
+            document.getElementById('refreshBtn').disabled = false;
 
             for (var i = 0; i < 9; i++) {
                 var cell = document.createElement('div');
@@ -66,7 +87,7 @@
                 cell.dataset.index = i;
                 var row = Math.floor(i / 3);
                 var col = i % 3;
-                cell.style.backgroundImage = 'url("' + CAPTCHA_IMAGE + '")';
+                cell.style.backgroundImage = 'url("' + item.image + '")';
                 cell.style.backgroundSize = '300% 300%';
                 cell.style.backgroundPosition = (col * 50) + '% ' + (row * 50) + '%';
                 cell.addEventListener('click', function () {
@@ -77,7 +98,7 @@
         }
 
         function toggleCell(cell) {
-            if (lockInput) return;
+            if (lockInput || verified) return;
             var idx = parseInt(cell.dataset.index, 10);
             if (selectedIndices.has(idx)) {
                 selectedIndices.delete(idx);
@@ -89,20 +110,22 @@
         }
 
         function checkAnswer() {
-            if (lockInput) return;
+            if (lockInput || verified || !currentCaptcha) return;
             if (selectedIndices.size === 0) {
                 document.getElementById('errorMsg').textContent = '请先选择图片区块';
                 return;
             }
 
-            var isCorrect = selectedIndices.size === CORRECT_CELLS.length &&
-                CORRECT_CELLS.every(function (idx) { return selectedIndices.has(idx); });
+            var correct = currentCaptcha.cells || [];
+            var isCorrect = selectedIndices.size === correct.length &&
+                correct.every(function (idx) { return selectedIndices.has(idx); });
 
             if (isCorrect) {
                 verified = true;
                 document.getElementById('errorMsg').textContent = '';
                 document.getElementById('successMsg').textContent = '✅ 验证通过！请等待 20 秒后自动进入...';
                 document.getElementById('verifyBtn').disabled = true;
+                document.getElementById('refreshBtn').disabled = true;
                 lockInput = true;
                 document.getElementById('waitMsg').textContent = '正在等待时间结束...';
                 startTimer();
@@ -135,7 +158,19 @@
             }, 1000);
         }
 
-        initCaptcha();
+        fetch('./assets/data/captcha.json', { cache: 'no-store' })
+            .then(function (resp) {
+                if (!resp.ok) throw new Error('HTTP ' + resp.status);
+                return resp.json();
+            })
+            .then(function (data) {
+                captchaPool = Array.isArray(data) && data.length ? data : FALLBACK_POOL;
+                pickAndRender();
+            })
+            .catch(function () {
+                captchaPool = FALLBACK_POOL;
+                pickAndRender();
+            });
     </script>
 </body>
 </html>

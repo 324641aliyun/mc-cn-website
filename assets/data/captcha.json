@@ -1,0 +1,112 @@
+[
+  {
+    "image": "./images/captcha/ai-01-cars.webp",
+    "target": "汽车",
+    "cells": [4, 5, 7, 8]
+  },
+  {
+    "image": "./images/captcha/ai-02-bicycles.webp",
+    "target": "自行车",
+    "cells": [3, 4, 5, 6, 7, 8]
+  },
+  {
+    "image": "./images/captcha/ai-03-buses.webp",
+    "target": "公交车",
+    "cells": [3, 4, 5]
+  },
+  {
+    "image": "./images/captcha/ai-04-pedestrians.webp",
+    "target": "行人",
+    "cells": [3, 4, 5, 6, 7, 8]
+  },
+  {
+    "image": "./images/captcha/ai-05-trees.webp",
+    "target": "行人",
+    "cells": [3, 4, 6, 7]
+  },
+  {
+    "image": "./images/captcha/ai-06-buildings.webp",
+    "target": "建筑",
+    "cells": [0, 1, 2, 3, 5, 6]
+  },
+  {
+    "image": "./images/captcha/ai-07-crosswalks.webp",
+    "target": "斑马线",
+    "cells": [6, 7, 8]
+  },
+  {
+    "image": "./images/captcha/ai-08-road-signs.webp",
+    "target": "路牌",
+    "cells": [1, 2, 4, 5]
+  },
+  {
+    "image": "./images/captcha/ai-09-street-lamps.webp",
+    "target": "汽车",
+    "cells": [6, 7]
+  },
+  {
+    "image": "./images/captcha/ai-10-umbrellas.webp",
+    "target": "雨伞",
+    "cells": [0, 2, 3, 4, 5]
+  },
+  {
+    "image": "./images/captcha/ai-11-flowers.webp",
+    "target": "花",
+    "cells": [4, 6, 7, 8]
+  },
+  {
+    "image": "./images/captcha/ai-12-trains.webp",
+    "target": "火车",
+    "cells": [3, 4, 5]
+  },
+  {
+    "image": "./images/captcha/ai-13-ships.webp",
+    "target": "轮船",
+    "cells": [3, 4, 5, 6]
+  },
+  {
+    "image": "./images/captcha/ai-14-motorcycles.webp",
+    "target": "摩托车",
+    "cells": [3, 4, 5, 6, 7, 8]
+  },
+  {
+    "image": "./images/captcha/ai-15-cranes.webp",
+    "target": "吊车",
+    "cells": [0, 1, 2, 3, 4, 5]
+  },
+  {
+    "image": "./images/captcha/ai-16-traffic-lights.webp",
+    "target": "红绿灯",
+    "cells": [0, 1, 2, 5]
+  },
+  {
+    "image": "./images/captcha/real-01-traffic-lights.webp",
+    "target": "红绿灯",
+    "cells": [3, 4, 5]
+  },
+  {
+    "image": "./images/captcha/real-02-street-light.webp",
+    "target": "红绿灯",
+    "cells": [1, 4, 6]
+  },
+  {
+    "image": "./images/captcha/real-03-traffic-light-closeup.webp",
+    "target": "红绿灯",
+    "cells": [1, 4, 7]
+  },
+  {
+    "image": "./images/captcha/real-04-traffic-light-signal.webp",
+    "target": "红绿灯",
+    "cells": [1, 4, 5, 7, 8]
+  },
+  {
+    "image": "./images/captcha/real-05-bus-traffic-light.webp",
+    "target": "红绿灯",
+    "cells": [1, 8]
+  },
+  {
+    "image": "./images/captcha/real-06-aerial-intersection.webp",
+    "target": "汽车",
+    "cells": [1, 3, 4, 5, 7, 8]
+  }
+]
